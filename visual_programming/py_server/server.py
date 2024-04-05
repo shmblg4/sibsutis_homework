@@ -1,7 +1,7 @@
 import socket
 
 SERVER = socket.socket()
-SERVER_ADDR = ('localhost', 3000)
+SERVER_ADDR = ('172.26.32.1', 3000)
 SERVER.bind(SERVER_ADDR)
 
 SERVER.listen(1)

@@ -1,0 +1,16 @@
+
+before walk main
+.   PRINTN tc(1) # main.go:4:9
+.   PRINTN-Args
+.   .   LITERAL-"Hello World!" string tc(1) # main.go:4:10
+after walk main
+.   BLOCK tc(1) # main.go:4:9
+.   BLOCK-List
+.   .   CALLFUNC Walked tc(1) # main.go:4:9
+.   .   .   NAME-runtime.printlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
+.   .   CALLFUNC Walked tc(1) # main.go:4:9
+.   .   .   NAME-runtime.printstring Class:PFUNC Offset:0 Used FUNC-func(string) tc(1)
+.   .   CALLFUNC-Args
+.   .   .   LITERAL-"Hello World!\n" string tc(1) # main.go:4:9
+.   .   CALLFUNC Walked tc(1) # main.go:4:9
+.   .   .   NAME-runtime.printunlock Class:PFUNC Offset:0 Used FUNC-func() tc(1)
