@@ -7,20 +7,19 @@
 void
 printDecodedCommand (short int value)
 {
-  mt_gotoXY (17, 2);
-  char tmp[6] = { 0 };
-  snprintf (tmp, 6, "%05d", value);
+  mt_gotoXY (2, 17);
+  char buffer[10] = { 0 };
+  sprintf (buffer, "%05d", value);
   write (STDOUT_FILENO, "dec: ", strlen ("dec: "));
-  write (STDOUT_FILENO, tmp, strlen (tmp));
+  write (STDOUT_FILENO, buffer, strlen (buffer));
   write (STDOUT_FILENO, " | ", strlen (" | "));
-  snprintf (tmp, 6, "%05o", value);
+  snprintf (buffer, 6, "%05o", value);
   write (STDOUT_FILENO, "oct: ", strlen ("oct: "));
-  write (STDOUT_FILENO, tmp, strlen (tmp));
+  write (STDOUT_FILENO, buffer, strlen (buffer));
   write (STDOUT_FILENO, " | ", strlen (" | "));
-  snprintf (tmp, 6, "%04X", value);
+  snprintf (buffer, 6, "%04X", value);
   write (STDOUT_FILENO, "hex: ", strlen ("hex: "));
-  write (STDOUT_FILENO, tmp, strlen (tmp));
-  // mt_gotoXY (17, 41);
+  write (STDOUT_FILENO, buffer, strlen (buffer));
   printBinary (value);
-  mt_gotoXY (26, 0);
+  mt_gotoXY (0, 26);
 }

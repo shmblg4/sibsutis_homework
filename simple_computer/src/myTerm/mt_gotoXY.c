@@ -7,7 +7,7 @@ int
 mt_gotoXY (int x, int y)
 {
   char command[20];
-  sprintf (command, "\e[%d;%dH", x, y);
+  sprintf (command, "\e[%d;%dH", y, x);
   write (STDOUT_FILENO, command, strlen (command));
   return 0;
 }

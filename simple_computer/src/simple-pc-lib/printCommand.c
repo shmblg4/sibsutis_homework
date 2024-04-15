@@ -14,7 +14,7 @@ printCommand (void)
   char line[20];
   sprintf (line, "+ gt%X : %X", command, operand);
 
-  mt_gotoXY (5, 94);
+  mt_gotoXY (94, 5);
   write (STDOUT_FILENO, line, strlen (line));
-  mt_gotoXY (26, 0);
+  mt_gotoXY (0, 26);
 }

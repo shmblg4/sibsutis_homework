@@ -12,7 +12,7 @@ printFlags (void)
   for (int i = 0; i < 5; ++i)
     {
       short int tmp = (1 << i) & flag_register;
-      mt_gotoXY (2, 90 + 3 * i);
+      mt_gotoXY (90 + 3 * i, 2);
       if (tmp == flag_values[i])
         {
           char tmp[3] = { ' ' };
@@ -22,5 +22,5 @@ printFlags (void)
       else
         write (STDOUT_FILENO, "_  ", strlen ("_  "));
     }
-  mt_gotoXY (26, 0);
+  mt_gotoXY (0, 26);
 }

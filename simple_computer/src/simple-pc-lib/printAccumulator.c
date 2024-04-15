@@ -7,7 +7,7 @@
 void
 printAccumulator (void)
 {
-  mt_gotoXY (2, 64);
+  mt_gotoXY (64, 2);
   write (STDOUT_FILENO, "sc: +", strlen ("sc: +"));
   for (int i = 3; i >= 0; i--)
     {
@@ -26,5 +26,5 @@ printAccumulator (void)
       write (STDOUT_FILENO, temp, strlen (temp));
     }
   printf (" ");
-  mt_gotoXY (26, 0);
+  mt_gotoXY (0, 26);
 }

@@ -7,9 +7,9 @@
 void
 printCounters (void)
 {
-  mt_gotoXY (5, 63);
+  mt_gotoXY (63, 5);
   write (STDOUT_FILENO, "T: 00", strlen ("T: 00"));
-  mt_gotoXY (5, 73);
+  mt_gotoXY (73, 5);
   write (STDOUT_FILENO, "IC: +", strlen ("IC: +"));
   for (int i = 3; i >= 0; i--)
     {
@@ -18,5 +18,5 @@ printCounters (void)
       snprintf (temp, 2, "%01X", tmp);
       write (STDOUT_FILENO, temp, strlen (temp));
     }
-  mt_gotoXY (26, 0);
+  mt_gotoXY (0, 26);
 }
