@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple REST API Frontend</title>
+</head>
+
+<body>
+    <h1>Simple REST API Frontend</h1>
+
+    <h2>Add Item</h2>
+    <input type="text" id="nameInput" placeholder="Enter item name">
+    <button onclick="addItem()">Add Item</button>
+
+    <h2>Items</h2>
+    <ul id="itemsList"></ul>
+
+    <script>
+        function addItem() {
+            var name = document.getElementById("nameInput").value;
+
+            fetch('/items/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    getItems();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function getItems() {
+            fetch('/items')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Items:', data);
+                    displayItems(data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayItems(items) {
+            var itemsList = document.getElementById("itemsList");
+            itemsList.innerHTML = "";
+
+            items.forEach(item => {
+                var li = document.createElement("li");
+                li.textContent = item.name;
+                itemsList.appendChild(li);
+            });
+        }
+
+        // Загрузка элементов при загрузке страницы
+        document.addEventListener("DOMContentLoaded", function () {
+            getItems();
+        });
+    </script>
+</body>
+
+</html>
